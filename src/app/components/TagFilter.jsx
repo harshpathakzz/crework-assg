@@ -11,10 +11,14 @@ const TagFilter = ({ tags, selectedTags, onTagSelect }) => {
   };
 
   return (
-    <div>
+    <div className="flex flex-row justify-start gap-5 ">
       <button
         onClick={() => onTagSelect([])}
-        style={{ fontWeight: selectedTags.length === 0 ? "bold" : "normal" }}
+        className={`border rounded border-white px-3 py-1 ${
+          selectedTags.length === 0
+            ? "bg-white text-[#1B1919]"
+            : "text-white bg-transparent"
+        }`}
       >
         All
       </button>
@@ -22,10 +26,11 @@ const TagFilter = ({ tags, selectedTags, onTagSelect }) => {
         <button
           key={tag}
           onClick={() => handleTagClick(tag)}
-          style={{
-            backgroundColor: selectedTags.includes(tag) ? "blue" : "white",
-            color: selectedTags.includes(tag) ? "white" : "black",
-          }}
+          className={`border rounded border-white px-3 py-1 ${
+            selectedTags.includes(tag)
+              ? "bg-white text-[#1B1919]"
+              : "text-white bg-transparent"
+          }`}
         >
           {tag}
         </button>

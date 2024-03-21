@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TagFilter from "./components/TagFilter";
 import Pagination from "./components/Pagination";
 import { data } from "./data/data";
@@ -12,6 +12,11 @@ export default function Home() {
   const filteredQuestions = data.filter((question) => {
     return selectedTags.every((tag) => question.tags.includes(tag));
   });
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedTags]);
+
   const questionsPerPage = 10;
   const totalPages = Math.ceil(filteredQuestions.length / questionsPerPage);
 
@@ -20,24 +25,57 @@ export default function Home() {
   const questionsToDisplay = filteredQuestions.slice(startIndex, endIndex);
 
   return (
-    <div>
-      <TagFilter
-        tags={allTags}
-        selectedTags={selectedTags}
-        onTagSelect={setSelectedTags}
-      />
-
-      {questionsToDisplay.map((question) => (
-        <div key={question.id}>
-          <h3>{question.title}</h3>
-          <p>{question.description}</p>
+    <div className="bg-[#181616] flex justify-center ">
+      <div className="w-4/5  ">
+        <div className="bg-[#181616]">
+          <h1
+            style={{
+              background:
+                "linear-gradient(180deg, #FFFFFF -39.23%, #FAAF3E 129.67%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+            className="font-bold text-4xl "
+          >
+            Product Management Interview Questions
+          </h1>
+          <h3 className="text-base font-normal text-white">
+            Browse 1000+ questions from top tech companies
+          </h3>
         </div>
-      ))}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={(newPage) => setCurrentPage(newPage)}
-      />
+        <TagFilter
+          tags={allTags}
+          selectedTags={selectedTags}
+          onTagSelect={setSelectedTags}
+        />
+        <div className="min-h-[80vh]">
+          {questionsToDisplay.map((question) => (
+            <div key={question.id} className="min-h-[16px]">
+              <div>
+                <p className="font-medium text-[18px] leading-6">
+                  {question.description}
+                </p>
+                <div className="flex justify-start gap-5">
+                  {question.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-base font-normal text-[#BDBCBC]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={(newPage) => setCurrentPage(newPage)}
+        />
+      </div>
     </div>
   );
 }
