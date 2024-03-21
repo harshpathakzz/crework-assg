@@ -11,7 +11,7 @@ const TagFilter = ({ tags, selectedTags, onTagSelect }) => {
   };
 
   return (
-    <div className="flex flex-row justify-start gap-5 my-2">
+    <div className="w-full flex flex-row flex-wrap justify-cen gap-5 my-2">
       <button
         onClick={() => onTagSelect([])}
         className={`border rounded border-white px-3 py-1 ${
