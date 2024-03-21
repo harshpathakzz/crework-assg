@@ -85,7 +85,7 @@ const Pagination = ({
         <button
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="bg-[#FAAF3D] text-white px-4 py-2 rounded"
+          className="bg-[#FAAF3D] text-white px-4 py-2 rounded cursor-pointer"
         >
           Previous
         </button>
@@ -93,7 +93,7 @@ const Pagination = ({
         <button
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="bg-[#FAAF3D] text-white px-4 py-2 rounded"
+          className="bg-[#FAAF3D] text-white px-4 py-2 rounded cursor-pointer"
         >
           Next
         </button>

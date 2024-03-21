@@ -26,9 +26,9 @@ export default function Home() {
   const questionsToDisplay = filteredQuestions.slice(startIndex, endIndex);
 
   return (
-    <div className="bg-[#181616] flex justify-center py-3">
+    <div className="bg-[#1B1919] flex justify-center py-3">
       <div className="w-4/5">
-        <div className="bg-[#181616] flex flex-col gap-3">
+        <div className="bg-[#1B1919] flex flex-col gap-3">
           <h1
             style={{
               background:
@@ -56,7 +56,7 @@ export default function Home() {
               className="min-h-[16px] flex flex-col gap-y-3"
             >
               <div>
-                <p className="font-medium text-[18px] leading-6">
+                <p className="font-semibold text-[18px] leading-6">
                   {question.description}
                 </p>
                 <div className="flex justify-start gap-5">

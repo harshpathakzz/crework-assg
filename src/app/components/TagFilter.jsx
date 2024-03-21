@@ -18,7 +18,7 @@ const TagFilter = ({ tags, selectedTags, onTagSelect }) => {
           selectedTags.length === 0
             ? "bg-white text-[#1B1919]"
             : "text-white bg-transparent"
-        }`}
+        } `}
       >
         All
       </button>
