@@ -27,7 +27,9 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
           onClick={() => onPageChange(2)}
           className={`border ${currentPage === 2 ? "font-bold" : "font-normal"} 
                       ${
-                        currentPage === 2 ? "border-[#FAAF3D]" : "border-white"
+                        currentPage === 2
+                          ? "border-[#FAAF3D] text-[#FAAF3D]"
+                          : "border-white"
                       } 
                       bg-transparent px-4 py-2`}
         >
@@ -52,7 +54,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
           } 
                       ${
                         currentPage === totalPages
-                          ? "border-[#FAAF3D]"
+                          ? "border-[#FAAF3D] text-[#FAAF3D]"
                           : "border-white"
                       } 
                       bg-transparent px-4 py-2`}
@@ -66,11 +68,11 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   };
 
   return (
-    <div className="flex justify-end gap-2">
+    <div className="flex justify-end gap-2 mt-2">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="bg-yellow-500 text-white px-4 py-2 rounded mr-2"
+        className="bg-[#FAAF3D] text-white px-4 py-2 rounded mr-2"
       >
         Previous
       </button>
@@ -78,7 +80,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="bg-yellow-500 text-white px-4 py-2 rounded ml-2"
+        className="bg-[#FAAF3D] text-white px-4 py-2 rounded ml-2"
       >
         Next
       </button>

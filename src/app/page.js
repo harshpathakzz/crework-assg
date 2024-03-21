@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <div className="bg-[#181616] flex justify-center ">
       <div className="w-4/5  ">
-        <div className="bg-[#181616]">
+        <div className="bg-[#181616] flex flex-col gap-3">
           <h1
             style={{
               background:
@@ -48,9 +48,12 @@ export default function Home() {
           selectedTags={selectedTags}
           onTagSelect={setSelectedTags}
         />
-        <div className="min-h-[80vh]">
+        <div className="min-h-[80vh] flex flex-col gap-y-3">
           {questionsToDisplay.map((question) => (
-            <div key={question.id} className="min-h-[16px]">
+            <div
+              key={question.id}
+              className="min-h-[16px] flex flex-col gap-y-3"
+            >
               <div>
                 <p className="font-medium text-[18px] leading-6">
                   {question.description}
