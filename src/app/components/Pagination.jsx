@@ -2,7 +2,13 @@
 
 import React from "react";
 
-const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+const Pagination = ({
+  currentPage,
+  totalPages,
+  onPageChange,
+  questionsPerPage,
+  totalQuestions,
+}) => {
   const renderPageNumbers = () => {
     const pageNumbers = [];
 
@@ -68,22 +74,30 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   };
 
   return (
-    <div className="flex justify-end gap-2 mt-2">
-      <button
-        onClick={() => onPageChange(currentPage - 1)}
-        disabled={currentPage === 1}
-        className="bg-[#FAAF3D] text-white px-4 py-2 rounded mr-2"
-      >
-        Previous
-      </button>
-      {renderPageNumbers()}
-      <button
-        onClick={() => onPageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
-        className="bg-[#FAAF3D] text-white px-4 py-2 rounded ml-2"
-      >
-        Next
-      </button>
+    <div className="flex justify-end items-center gap-2 my-4">
+      <div className="hidden md:flex text-white mr-5 ">
+        Showing{" "}
+        {Math.min((currentPage - 1) * questionsPerPage + 1, totalQuestions)}-
+        {Math.min(currentPage * questionsPerPage, totalQuestions)} of{" "}
+        {totalQuestions} questions
+      </div>
+      <div className="flex gap-2">
+        <button
+          onClick={() => onPageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+          className="bg-[#FAAF3D] text-white px-4 py-2 rounded"
+        >
+          Previous
+        </button>
+        {renderPageNumbers()}
+        <button
+          onClick={() => onPageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+          className="bg-[#FAAF3D] text-white px-4 py-2 rounded"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };

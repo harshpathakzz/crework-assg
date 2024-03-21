@@ -19,14 +19,15 @@ export default function Home() {
 
   const questionsPerPage = 10;
   const totalPages = Math.ceil(filteredQuestions.length / questionsPerPage);
+  const totalQuestions = filteredQuestions.length;
 
   const startIndex = (currentPage - 1) * questionsPerPage;
   const endIndex = startIndex + questionsPerPage;
   const questionsToDisplay = filteredQuestions.slice(startIndex, endIndex);
 
   return (
-    <div className="bg-[#181616] flex justify-center ">
-      <div className="w-4/5  ">
+    <div className="bg-[#181616] flex justify-center py-3">
+      <div className="w-4/5">
         <div className="bg-[#181616] flex flex-col gap-3">
           <h1
             style={{
@@ -77,6 +78,8 @@ export default function Home() {
           currentPage={currentPage}
           totalPages={totalPages}
           onPageChange={(newPage) => setCurrentPage(newPage)}
+          questionsPerPage={questionsPerPage}
+          totalQuestions={totalQuestions}
         />
       </div>
     </div>

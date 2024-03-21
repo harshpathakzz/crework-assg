@@ -19,48 +19,37 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-[#181616] m-10">
-      <div className="flex flex-row md:flex-row justify-between items-center">
-        {/* Desktop Menu */}
-        <Image
-          src={logo}
-          width={157}
-          height={49}
-          alt="HELLO"
-          className="bg-red-500"
-        />
-        <div className="hidden md:flex gap-12 text-[#BDBCBC] items-center">
-          <ul>30 Days of PM</ul>
-          <ul>Newsletter</ul>
-          <ul>Builders Cohort</ul>
-        </div>
-        {/* Mobile Menu */}
-        <div className="md:hidden flex justify-end items-center">
-          <div className="cursor-pointer" onClick={toggleMenu}>
-            {/* Trigger element */}
-            <button className="text-[#BDBCBC]">
-              {isMenuOpen ? "Close" : "Menu"}
-            </button>
-          </div>
-        </div>
+    <header className="bg-[#1B1919] flex flex-row justify-between items-center p-4 min-h-20 ">
+      <Image
+        src={logo}
+        width={157}
+        height={49}
+        alt="HELLO"
+        className="mr-4" // Add margin for spacing
+      />
+      <nav className="hidden md:flex gap-12 text-[#BDBCBC] items-center">
+        <ul>30 Days of PM</ul>
+        <ul>Newsletter</ul>
+        <ul>Builders Cohort</ul>
+      </nav>
+      <div className="md:hidden flex items-center">
+        <button className="text-[#BDBCBC] cursor-pointer" onClick={toggleMenu}>
+          {isMenuOpen ? "Close" : "Menu"}
+        </button>
       </div>
-      {/* Accordion Menu */}
       {isMenuOpen && (
         <div
-          className="md:hidden fixed top-10 left-0 right-0 bottom-0 z-10 bg-black bg-opacity-50"
+          className="fixed top-0 left-0 right-0 bottom-0 z-10 bg-black bg-opacity-50 h-full overflow-auto"
           onClick={handleOutsideClick}
         >
-          <div
-            className="bg-[#181616] text-[#BDBCBC] p-4 overflow-auto max-h-screen"
-            ref={menuRef}
-          >
+          <div className="bg-[#181616] text-[#BDBCBC] p-4 max-h-screen">
             <div className="flex justify-between items-center mb-4">
               <Image src={logo} width={157} height={49} alt="HELLO" />
               <button className="text-[#BDBCBC]" onClick={toggleMenu}>
                 Close
               </button>
             </div>
-            <ul className="flex flex-col items-center">
+            <ul className="flex flex-col items-center gap-6">
               <li>30 Days of PM</li>
               <li>Newsletter</li>
               <li>Builders Cohort</li>
@@ -68,7 +57,7 @@ const Header = () => {
           </div>
         </div>
       )}
-    </div>
+    </header>
   );
 };
 
