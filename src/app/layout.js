@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html>
       <head>
-        <title>Your App Title</title>
+        <title>Crework</title>
       </head>
       <body>
         <Header />
